@@ -25,6 +25,12 @@ module FieldedStruct
           @base_type = values.flatten.compact unless values.empty?
           @base_type
         end
+
+        # @param [Array] values
+        def coercible_types(*values)
+          @coercible_types = values.flatten.compact unless values.empty?
+          @coercible_types
+        end
       end
 
       # @param [FieldedStruct::Attribute] attribute
@@ -38,6 +44,10 @@ module FieldedStruct
 
       def base_type
         self.class.base_type
+      end
+
+      def coercible_types
+        self.class.coercible_types
       end
 
       def coercible?(value)

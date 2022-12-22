@@ -5,6 +5,7 @@ module FieldedStruct
     class Boolean < Base
       type :boolean
       base_types ::TrueClass, ::FalseClass
+      coercible_types ::String, ::Symbol, ::Integer
 
       FALSE_VALUES = %w[0 f false off].to_set.freeze
 
@@ -21,7 +22,7 @@ module FieldedStruct
       end
 
       def type_coercible?(value)
-        [::String, ::Symbol, ::Integer].any? { |x| value.is_a? x }
+        coercible_types.any? { |x| value.is_a? x }
       end
     end
 

@@ -6,7 +6,7 @@ RSpec.describe FieldedStruct::Types::Time, type: :type do
   describe 'class' do
     it { expect(described_class.ancestors).to include FieldedStruct::Types::Base }
     it { expect(described_class.type).to eq :time }
-    it { expect(described_class.base_type).to eq [::Time, ::ActiveSupport::TimeWithZone] }
+    it { expect(described_class.base_type).to eq [Time, ActiveSupport::TimeWithZone] }
   end
   describe 'instance' do
     subject { described_class.new attribute }

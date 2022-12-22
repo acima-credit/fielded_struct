@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-Time.zone
-
 module FieldedStruct
   module Types
     class Time < Base

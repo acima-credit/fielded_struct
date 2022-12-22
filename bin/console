@@ -4,5 +4,11 @@
 require 'bundler/setup'
 require 'fielded_struct'
 
+ROOT_PATH = Pathname.new File.expand_path(File.dirname(File.dirname(__FILE__)))
+puts "ROOT_PATH : #{ROOT_PATH}"
+
+require 'active_support/isolated_execution_state'
+Time.zone = 'MST'
+
 require 'pry'
 Pry.start

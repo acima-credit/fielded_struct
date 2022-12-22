@@ -6,6 +6,7 @@ require 'fielded_struct'
 require 'rspec/core/shared_context'
 require 'rspec/json_expectations'
 require 'hashdiff'
+require 'active_support/isolated_execution_state'
 
 ROOT_PATH = Pathname.new File.expand_path(File.dirname(File.dirname(__FILE__)))
 
