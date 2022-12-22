@@ -1,5 +1,5 @@
 AllCops:
-  TargetRubyVersion: 2.6
+  TargetRubyVersion: 2.7
   Include:
     - '**/*.rake'
     - '**/Rakefile'
@@ -9,11 +9,12 @@ AllCops:
   Exclude:
     - '**/*.gemspec'
     - '**/Gemfile*'
+  NewCops: enable
 
 Security/Eval:
   Enabled: false
 
-Metrics/LineLength:
+Layout/LineLength:
   Max: 120
 
 Metrics/MethodLength:
@@ -51,12 +52,12 @@ Naming/VariableName:
 Metrics/AbcSize:
   Enabled: true
   Exclude:
-    - 'lib/field_struct/structs/base.rb'
+    - 'lib/fielded_struct/structs/base.rb'
     - 'spec/support/**'
-    - 'lib/field_struct/structs/base/attribute.rb'
+    - 'lib/fielded_struct/structs/base/attribute.rb'
 
 Metrics/CyclomaticComplexity:
   Enabled: true
   Exclude:
-    - 'lib/field_struct/structs/base.rb'
-    - 'lib/field_struct/structs/base/attribute.rb'
+    - 'lib/fielded_struct/structs/base.rb'
+    - 'lib/fielded_struct/structs/base/attribute.rb'
