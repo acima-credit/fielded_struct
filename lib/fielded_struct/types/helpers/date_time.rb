@@ -78,7 +78,6 @@ module FieldedStruct
         end
 
         def interface_coercible?(value)
-          puts ">> interface_coercible? | meth : #{interface_meth.inspect} | res : #{value.respond_to?(interface_meth)}"
           value.respond_to?(interface_meth)
         end
 

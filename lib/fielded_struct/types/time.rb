@@ -36,6 +36,12 @@ module FieldedStruct
         zone.parse value
       end
 
+      def coerce_interface(value)
+        value.send(interface_meth) unless value.is_a?(::Date) && zone
+
+        zone.parse value.to_s
+      end
+
       # rubocop:disable Metrics/AbcSize,Metrics/CyclomaticComplexity,Metrics/PerceivedComplexity
       def build_instance(*args)
         return if args[0].nil? || (args[0].zero? && args[1].zero? && args[2].zero?)
