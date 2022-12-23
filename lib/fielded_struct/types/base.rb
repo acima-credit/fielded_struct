@@ -62,7 +62,7 @@ module FieldedStruct
         return nil if should_not_coerce?
         return nil unless can_coerce?(value)
 
-        coerce_value(value).tap { |x| puts ">> #{type} : coerce | x (#{x.class.name}) #{x.inspect}" }
+        coerce_value value
       rescue StandardError
         nil
       end
