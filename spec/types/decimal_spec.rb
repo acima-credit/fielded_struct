@@ -110,6 +110,9 @@ RSpec.describe FieldedStruct::Types::Decimal, type: :type do
         it { expect(subject.coerce('0')).to eq bd(0) } # String
         it { expect(subject.coerce('3.1')).to eq bd(3.1) }
         it { expect(subject.coerce('-3.1')).to eq bd(-3.1) }
+        it { expect(subject.coerce('-3.1 dollars')).to eq bd(-3.1) }
+        it { expect(subject.coerce('$3.1')).to eq nil }
+        it { expect(subject.coerce('[ 3.1 ]')).to eq nil }
         it { expect(subject.coerce('f')).to eq nil }
         it { expect(subject.coerce('F')).to eq nil }
         it { expect(subject.coerce('false')).to eq nil }

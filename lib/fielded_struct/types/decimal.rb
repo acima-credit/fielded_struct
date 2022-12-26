@@ -24,10 +24,8 @@ module FieldedStruct
 
         casted_value = \
           case value
-          when ::Float
-            coerce_float value
-          when ::Numeric
-            coerce_numeric value
+          when ::Float, ::Numeric
+            value.to_d
           when ::String
             coerce_string value
           else
@@ -35,14 +33,6 @@ module FieldedStruct
           end
 
         apply_scale casted_value
-      end
-
-      def coerce_float(value)
-        value.to_d
-      end
-
-      def coerce_numeric(value)
-        value.to_d
       end
 
       def coerce_string(value)
@@ -62,7 +52,7 @@ module FieldedStruct
       end
 
       def rejection_rx
-        /\A\s*[+-]?\d/
+        /\A\s*[+-]?\d+(\.\d+)?/
       end
     end
 
