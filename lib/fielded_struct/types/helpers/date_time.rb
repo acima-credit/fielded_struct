@@ -18,11 +18,6 @@ module FieldedStruct
               iso: [iso_rx, 1, 2, 3, 4, 5, 6, 7]
             }
           end
-
-          def interface_meth(value = :no_value)
-            @interface_meth = value unless value == :no_value
-            @interface_meth || :unknown
-          end
         end
 
         def initialize(attribute)
@@ -35,8 +30,8 @@ module FieldedStruct
           self.class.parse_formats
         end
 
-        def interface_meth
-          self.class.interface_meth
+        def coerce_meth
+          self.class.coerce_meth
         end
 
         private
@@ -78,11 +73,11 @@ module FieldedStruct
         end
 
         def interface_coercible?(value)
-          value.respond_to?(interface_meth)
+          value.respond_to?(coerce_meth)
         end
 
         def coerce_interface(value)
-          value.send interface_meth
+          value.send coerce_meth
         end
       end
     end

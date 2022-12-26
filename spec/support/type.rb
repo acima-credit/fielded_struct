@@ -16,6 +16,10 @@ module TypeHelpers
   let(:date_value) { Date.parse('2020-03-01') }
   # let(:datetime_value) { time_value.to_datetime }
   # let(:date_value) { time_value.to_date }
+
+  def bd(value)
+    BigDecimal(value.to_s)
+  end
 end
 
 RSpec.configure do |config|

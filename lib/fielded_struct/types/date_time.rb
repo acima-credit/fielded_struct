@@ -7,7 +7,7 @@ module FieldedStruct
 
       type :datetime
       base_type ::DateTime
-      interface_meth :to_datetime
+      coerce_meth :to_datetime
 
       private
 
@@ -51,7 +51,7 @@ module FieldedStruct
       # rubocop:enable Metrics/AbcSize,Metrics/CyclomaticComplexity,Metrics/PerceivedComplexity
 
       def coerce_interface(value)
-        new_value = value.send interface_meth
+        new_value = value.send coerce_meth
         return new_value if zone.nil?
 
         if new_value.offset.zero?

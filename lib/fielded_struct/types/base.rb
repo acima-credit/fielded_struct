@@ -31,6 +31,11 @@ module FieldedStruct
           @coercible_types = values.flatten.compact unless values.empty?
           @coercible_types
         end
+
+        def coerce_meth(value = :no_value)
+          @coerce_meth = value unless value == :no_value
+          @coerce_meth || :unknown
+        end
       end
 
       # @param [FieldedStruct::Attribute] attribute
@@ -48,6 +53,10 @@ module FieldedStruct
 
       def coercible_types
         self.class.coercible_types
+      end
+
+      def coerce_meth
+        self.class.coerce_meth
       end
 
       def coercible?(value)
@@ -99,6 +108,10 @@ module FieldedStruct
 
       def can_coerce?(_value)
         true
+      end
+
+      def type_coercible?(value)
+        coercible_types.any? { |x| value.is_a? x }
       end
 
       def coerce_value(value)

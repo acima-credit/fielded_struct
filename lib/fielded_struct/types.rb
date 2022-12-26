@@ -32,11 +32,13 @@ module FieldedStruct
 end
 
 require_relative 'types/helpers/date_time'
+require_relative 'types/helpers/numeric'
 
 require_relative 'types/base'
 require_relative 'types/boolean'
 require_relative 'types/date'
 require_relative 'types/date_time'
+require_relative 'types/decimal'
 require_relative 'types/integer'
 require_relative 'types/string'
 require_relative 'types/time'

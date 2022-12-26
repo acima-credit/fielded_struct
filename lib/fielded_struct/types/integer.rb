@@ -3,8 +3,11 @@
 module FieldedStruct
   module Types
     class Integer < Base
+      include Helpers::Numeric
+
       type :integer
       base_type ::Integer
+      coercible_types ::Numeric
 
       private
 
@@ -12,12 +15,8 @@ module FieldedStruct
         value.to_i
       end
 
-      def can_coerce?(value)
-        string_coercible?(value) || numeric_coercible?(value)
-      end
-
-      def string_coercible?(value)
-        value.is_a?(::String) && !!value.to_s.match(/\A\s*[+-]?\d/)
+      def rejection_rx
+        /\A\s*[+-]?\d/
       end
 
       def numeric_coercible?(value)

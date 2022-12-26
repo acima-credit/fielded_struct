@@ -7,7 +7,7 @@ module FieldedStruct
 
       type :date
       base_type ::Date
-      interface_meth :to_date
+      coerce_meth :to_date
 
       class << self
         def iso_rx

@@ -7,7 +7,7 @@ module FieldedStruct
 
       type :time
       base_types ::Time, ::ActiveSupport::TimeWithZone
-      interface_meth :to_time
+      coerce_meth :to_time
 
       private
 
@@ -37,7 +37,7 @@ module FieldedStruct
       end
 
       def coerce_interface(value)
-        value.send(interface_meth) unless value.is_a?(::Date) && zone
+        value.send(coerce_meth) unless value.is_a?(::Date) && zone
 
         zone.parse value.to_s
       end
